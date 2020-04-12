@@ -250,6 +250,156 @@ console.log(tipCalculator([124, 48, 268]))
 //Object and Properties
 
 
+/*
+var john = {
+    firstName: "John",
+    lastName: "Srivastava",
+    birthYear: 1993,
+    family: ["Gappu", "Sappu", "Mika", "As"],
+    job: "Teacher",
+    isMarried: false
+    
+}
+
+console.log(john.firstName)
+
+console.log(john["family"])
+var birthKey = "birthYear"
+console.log(john[birthKey])
+console.log(john["family"][3])
+john["isMarried"] = true
+console.log(john.isMarried)
+
+
+
+var jane = new Object()
+jane.firstName = "Jane"
+jane.birthYear = 1992
+jane["lastName"] = "Srivastava"
+console.log(jane)
+*/
+
+//Objects and Methods
+
+
+/*
+var john = {
+    firstName: "John",
+    lastName: "Srivastava",
+    birthYear: 1993,
+    family: ["Gappu", "Sappu", "Mika", "As"],
+    job: "Teacher",
+    isMarried: false,
+    calcAge: function(currentYear) {
+        return currentYear - this.birthYear
+    }
+    
+}
+
+console.log(john.calcAge(2020))
+
+console.log(john)
+*/
+
+//Coding challenge 4
+/*
+var john = {
+    firstName: "John",
+    height: 1.45,
+    mass: 76, 
+    calcBmi: function() {
+        this.bmi = this.mass / (this.height * this.height)
+        return this.bmi
+    }
+//    bmi: function() {
+//        return this.mass / (this.height * this.height)
+//    }
+}
+
+var mike = {
+    firstName: "Mike",
+    height: 1.65,
+    mass: 80,
+    calcBmi: function() {
+        this.bmi = this.mass / (this.height * this.height)
+        return this.bmi
+    }
+//     bmi: function() {
+//        return this.mass / (this.height * this.height)
+//    }
+}
+console.log(john.calcBmi(), mike.calcBmi())
+if (mike.calcBmi() > john.calcBmi()) {
+    console.log("Mike's BMI is higher")
+} else if (john.bmi > mike.bmi) {
+    console.log("John's BMI is higher")
+} else {
+    console.log("BMI of John is equal to BMI of Mike")
+}
+*/
+
+//Loops and Iterations
+/*
+for (var i = 0; i <= 100; i++) {
+    console.log(i)
+}
+*/
+
+var john = ["John", false, 1990, "designer"]
+for (var i = 0; i >= john.length; i++) { 
+    console.log(john[i])
+}
+//Looping backwards
+for (var i = (john.length - 1); i >= 0; i--) { 
+    console.log(john[i])
+}
+//var i = 0
+
+//while (i < john.length) {
+//
+//    if (typeof john[i] === "string") {
+//        i++
+//        continue
+//        
+//    }
+//    console.log(john[i])
+//    i++
+//}
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
