@@ -10,7 +10,7 @@ GAME RULES:
 */
 var scores, roundScores, activePlayer, dice, maxScore, prevDiceCount
 
-newGame()
+newGame(100)
 
 document.querySelector(".btn-roll").addEventListener("click", function() {
     //1. random number
@@ -20,7 +20,7 @@ document.querySelector(".btn-roll").addEventListener("click", function() {
     diceDOM.style.display = "block"
     diceDOM.src = "dice-" + dice + ".png"
     //3. Update the round score if number is not 1
-    if ((dice !== 1) && (prevDiceCount !== 6)) {
+    if ((dice !== 1) && !(dice === 6 && dice === prevDiceCount)) {
         //Add Score
         roundScore += dice  
         document.getElementById("current-" + activePlayer).textContent = roundScore
@@ -41,7 +41,7 @@ document.querySelector(".btn-hold").addEventListener("click",function() {
         document.getElementById("current-" + activePlayer).textContent = roundScore
     
        //check if the player has won the game else next player
-        if (scores[activePlayer] >= 10) {
+        if (scores[activePlayer] >= maxScore) {
             document.getElementById("name-" + activePlayer).textContent = "Winner!!!"
             document.querySelector(".dice").style.display = "none"
             document.querySelector(".btn-roll").style.display = "none"
@@ -50,12 +50,22 @@ document.querySelector(".btn-hold").addEventListener("click",function() {
             nextPlayer()
         }
 })
+document.querySelector("#maxScore").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        newGame(maxScore)
+        maxScore = document.querySelector("#maxScore").value
+        
+    }
+})
 
-function newGame() {
+
+function newGame(maxScore) {
     scores = [0,0]
     roundScore = 0
     activePlayer = 0
     prevDiceCount = 0
+    maxScore = maxScore
     document.querySelector(".dice").style.display = "none"
     document.querySelector(".btn-roll").style.display = "block"
     document.querySelector(".btn-hold").style.display = "block"
