@@ -8,7 +8,7 @@ GAME RULES:
 - The first player to reach 100 points on GLOBAL score wins the game
 
 */
-var scores, roundScores, activePlayer, dice
+var scores, roundScores, activePlayer, dice, maxScore, prevDiceCount
 
 newGame()
 
@@ -20,10 +20,11 @@ document.querySelector(".btn-roll").addEventListener("click", function() {
     diceDOM.style.display = "block"
     diceDOM.src = "dice-" + dice + ".png"
     //3. Update the round score if number is not 1
-    if (dice !== 1) {
+    if ((dice !== 1) && (prevDiceCount !== 6)) {
         //Add Score
         roundScore += dice  
         document.getElementById("current-" + activePlayer).textContent = roundScore
+        prevDiceCount = dice
     } else {
         //Next Player
         roundScore = 0
@@ -40,7 +41,7 @@ document.querySelector(".btn-hold").addEventListener("click",function() {
         document.getElementById("current-" + activePlayer).textContent = roundScore
     
        //check if the player has won the game else next player
-        if (scores[activePlayer] >= 100) {
+        if (scores[activePlayer] >= 10) {
             document.getElementById("name-" + activePlayer).textContent = "Winner!!!"
             document.querySelector(".dice").style.display = "none"
             document.querySelector(".btn-roll").style.display = "none"
@@ -54,6 +55,7 @@ function newGame() {
     scores = [0,0]
     roundScore = 0
     activePlayer = 0
+    prevDiceCount = 0
     document.querySelector(".dice").style.display = "none"
     document.querySelector(".btn-roll").style.display = "block"
     document.querySelector(".btn-hold").style.display = "block"
@@ -68,6 +70,7 @@ function newGame() {
 }
 
 function nextPlayer() {
+        prevDiceCount = 0
         document.querySelector(".player-" + activePlayer + "-panel").classList.remove("active")
         activePlayer = activePlayer === 0 ? 1 : 0
         document.querySelector(".player-" + activePlayer + "-panel").classList.add("active")
